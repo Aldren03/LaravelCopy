@@ -66,8 +66,7 @@ class AdminController extends Controller
         $employee->position = $request->position;
         $employee->status = $request->status;
         $employee->user_id = $user->id;
-    
-        // Check if an image file is uploaded and process it
+ 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -180,11 +179,10 @@ class AdminController extends Controller
             $validatedData['picture'] = $picturePath;
         }
 
-        // Store the data in the database
+
         Borrower::create($validatedData);
 
-        // Redirect or return success response
-        return redirect()->route('admin.application.success'); // You should create a success route or view
+        return redirect()->route('admin.application.success'); 
     }
 
     
