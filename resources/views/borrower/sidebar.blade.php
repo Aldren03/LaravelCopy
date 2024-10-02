@@ -34,21 +34,9 @@
                 <hr class="sidebar-divider flex-grow h-px bg-white ml-4">
             </li>
             <li class="mb-2">
-                <a href="{{url('ledger')}}" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('ledger') ? 'active' : '' }}">
-                    <i class="lni lni-notepad mr-3"></i>
-                    <span>Ledger</span>
-                </a>
-            </li>
-            <li class="mb-2">
                 <a href="{{url('showForm')}}" class="sidebar-link d-flex align-items-center p-4 text-black">
                     <i class="lni lni-popup mr-3"></i>
                     <span>Online Application</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black">
-                    <i class="lni lni-layout mr-3"></i>
-                    <span>Payment Records</span>
                 </a>
             </li>
         </ul>

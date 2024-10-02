@@ -25,6 +25,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
         'phone',
@@ -71,9 +72,9 @@ class User extends Authenticatable
             if (in_array($user->usertype, $employeeTypes)) {
                 Employee::create([
                     'user_id' => $user->id,
-                    'employee_name' => $user->name, // Assuming 'name' is the user's name
-                    'position' => $user->usertype, // Set position based on usertype
-                    // Initialize other fields if necessary
+                    'employee_name' => $user->name, 
+                    'position' => $user->usertype, 
+                   
                 ]);
             }
         });
@@ -86,9 +87,9 @@ class User extends Authenticatable
                 Employee::updateOrCreate(
                     ['user_id' => $user->id],
                     [
-                        'employee_name' => $user->name, // Update name
-                        'position' => $user->usertype, // Update position
-                        // Update other fields as necessary
+                        'employee_name' => $user->name, 
+                        'position' => $user->usertype, 
+                       
                     ]
                 );
             } else {

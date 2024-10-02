@@ -33,11 +33,15 @@
     @endif
     
     <div class="container mt-3">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
     <form action="{{ route('borrowers.view') }}" method="GET">
     <button class="btn btn-info" type="submit">Search</button>
     <input type="text" name="search" placeholder="Search for borrowers" value="{{ request('search') }}">
 </form>
-        </form>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
     </div>
     <div style="margin-bottom: 20px;">
@@ -46,15 +50,14 @@
             </button>
         </div>
         <h1 style="
-            font-size: 1.5rem; /* Larger font size for emphasis */
-            font-weight: 600; /* Bold font weight */
-            color: #343a40; /* Dark text color */
-            
-            padding: 10px 20px; /* Padding around the heading */
-            background-color: #C0E6BA; /* Light background color */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-            text-align: center; /* Center align the text */
+            font-size: 1.5rem;
+            font-weight: 600; 
+            color: #343a40; 
+            padding: 10px 20px; 
+            background-color: #C0E6BA; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+            text-align: center; 
         ">
             Walk-in Borrowers
         </h1>
@@ -92,13 +95,14 @@
         </div>
     </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    </div>
-    <h1 style=" font-size: 1.5rem; font-weight: 600; color: #343a40; padding: 10px 20px; background-color: #C0E6BA; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); text-align: center;">
+</div>
+<h1 style=" font-size: 1.5rem; font-weight: 600; color: #343a40; padding: 10px 20px; background-color: #C0E6BA; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); text-align: center;">
         Approved Online Applications
     </h1>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
+           
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -119,13 +123,14 @@
                                     <td>{{ $application->home_address }}</td>
                                     <td>{{ $application->email }}</td>
                                     <td>
-                                    <a onclick="return confirm('Are you sure to delete this?');" class="btn btn-danger" href="{{ route('borrower_delete', $application->id) }}">Delete</a>
-                                        <a href="{{ route('application.show', ['id' => $application->id]) }}" class="btn btn-info btn-sm">View Details</a>
+                                        <a href="{{ route('application.show', ['id' => $application->id]) }}" class="btn btn-info btn-sm">View</a>
+                                        <a onclick="return confirm('Are you sure to delete this?');" class="btn btn-danger" href="{{ route('borrower_delete', $application->id) }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

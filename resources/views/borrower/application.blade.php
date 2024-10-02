@@ -9,6 +9,7 @@
 @include('borrower.sidebar')
 <div class="container mt-2">
 <body class="bg-gray-100 text-gray-800 font-roboto">
+
     <h2 class="text-2xl text-center text-green-600 my-6">APPLICATION FORM</h2>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -77,11 +78,42 @@
                                 <option>Widowed</option>
                             </select>
                         </td>
-                        <td class="py-2">Home Address:</td>
-                        <td class="py-2">
-                            <input type="text" name="home_address" id="home_address" class="w-full p-2 border border-gray-300 rounded">
-                        </td>
-                    </tr>
+                        <tr>
+    <td class="py-2"><label for="municipality">Municipality:</label></td>
+    <td class="py-2">
+        <select name="municipality" id="municipality" class="w-full p-2 border border-gray-300 rounded">
+            <option value="">Select Municipality</option>
+            <option value="Anao">Anao</option>
+            <option value="Bamban">Bamban</option>
+            <option value="Camiling">Camiling</option>
+            <option value="Capas">Capas</option>
+            <option value="Concepcion">Concepcion</option>
+            <option value="Gerona">Gerona</option>
+            <option value="La Paz">La Paz</option>
+            <option value="Mayantoc">Mayantoc</option>
+            <option value="Moncada">Moncada</option>
+            <option value="Paniqui">Paniqui</option>
+            <option value="Pura">Pura</option>
+            <option value="Ramos">Ramos</option>
+            <option value="San Clemente">San Clemente</option>
+            <option value="San Jose">San Jose</option>
+            <option value="San Manuel">San Manuel</option>
+            <option value="Santa Ignacia">Santa Ignacia</option>
+            <option value="Tarlac City">Tarlac City</option>
+            <option value="Victoria">Victoria</option>
+        </select>
+    </td>
+</tr>
+
+<tr id="home-address-row" class="hidden">
+    <td class="py-2"><label for="home_address">Barangay:</label></td>
+    <td class="py-2">
+        <select name="home_address" id="home_address" class="w-full p-2 border border-gray-300 rounded">
+            <option value="">Select Barangay</option>
+        </select>
+    </td>
+</tr>
+
                     <tr>
                         <td class="py-2">Place of Birth:</td>
                         <td class="py-2">

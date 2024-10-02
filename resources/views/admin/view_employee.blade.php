@@ -39,10 +39,30 @@
 <body>
     @include('admin.header')
     @include('admin.sidebar')
+    
+
 
     <div class="container mt-4">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+        
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="mb-0 font-weight-bold">Employee List</h1>
+        <h1 style=" font-size: 1.5rem; font-weight: 600; color: #343a40; padding: 10px 20px; background-color: #C0E6BA; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); text-align: center;">
+            Employee List
+        </h1>
             <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#addEmployeeModal"><i class="lni lni-plus"></i> Add Employee</button>
         </div>
 
@@ -50,13 +70,14 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search by Employee Name" name="search" value="{{ request('search') }}">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="btn btn-info" type="submit">Search</button>
                 </div>
             </div>
         </form>
-
         <div class="table-responsive">
+        
             <table class="table table-striped table-bordered custom-table">
+                
                 <thead class="thead-green">
                     <tr>
                         <th>Employee Name</th>
@@ -92,7 +113,7 @@
         </div>
     </div>
 
-    <!-- Add Employee Button -->
+
     <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form action="{{ route('add_employee') }}" method="POST" enctype="multipart/form-data">

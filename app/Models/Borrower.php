@@ -28,4 +28,9 @@ class Borrower extends Model
     {
         return 'TD3-' . strtoupper(uniqid());
     }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
+    
 }

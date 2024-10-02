@@ -46,13 +46,21 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="{{url('ledger')}}" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('ledger') ? 'active' : '' }}">
-                    <i class="lni lni-notepad mr-3"></i>
-                    <span>Ledger</span>
+                <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('ledger') || request()->is('completed_ledger') ? 'active' : '' }}" onclick="toggleDropdown(event, 'ledger-dropdown')">
+                <i class="lni lni-notepad mr-3"></i>
+                    <span>Ledger <i class="lni lni-chevron-down ml-auto"></i></span>
                 </a>
+                <ul id="ledger-dropdown" class="d-none pl-4">
+                    <li class="mb-2">
+                        <a href="{{url('ledger')}}" class="block p-2 text-black hover:bg-green-200 rounded">Ongoing Ledger</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{url('completed_ledger')}}" class="block p-2 text-black hover:bg-green-200 rounded">Completed Ledger</a>
+                    </li>
+                </ul>
             </li>
             <li class="mb-2">
-                <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('loan_plan') || request()->is('add_loan_type') ? 'active' : '' }}" onclick="toggleDropdown(event, 'loan-dropdown')">
+                <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('loan_plan') || request()->is('loan_type') ? 'active' : '' }}" onclick="toggleDropdown(event, 'loan-dropdown')">
                     <i class="lni lni-credit-cards mr-3"></i>
                     <span>Loan Details <i class="lni lni-chevron-down ml-auto"></i></span>
                 </a>
@@ -66,7 +74,7 @@
                 </ul>
             </li>
             <li class="mb-2">
-    <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black" onclick="toggleDropdown(event, 'application-dropdown')">
+    <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('application_details') || request()->is('pending_applications') ? 'active' : '' }}"  onclick="toggleDropdown(event, 'application-dropdown')">
         <i class="lni lni-popup mr-3"></i>
         <span>Online Application <i class="lni lni-chevron-down ml-auto"></i></span>
     </a>
@@ -82,7 +90,7 @@
 
 
             <li class="mb-2">
-                <a href="#" class="sidebar-link d-flex align-items-center p-4 text-black">
+                <a href="{{route('payments.index')}}" class="sidebar-link d-flex align-items-center p-4 text-black {{ request()->is('payment') ? 'active' : '' }}">
                     <i class="lni lni-layout mr-3"></i>
                     <span>Payment Records</span>
                 </a>

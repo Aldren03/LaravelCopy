@@ -18,3 +18,9 @@
         border-left: 3px solid #3b7ddd;
     }
 </style>
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>

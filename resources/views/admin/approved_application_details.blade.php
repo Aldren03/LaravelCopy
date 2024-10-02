@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="/public">
     @include('admin.css')
 </head>
 <body>
@@ -8,6 +9,11 @@
     @include('admin.sidebar')
     
     <div class="container mt-4">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
         <h1 class="h3 mb-4 text-green-600">Approved Applications</h1>
 
         <div class="card shadow-sm">

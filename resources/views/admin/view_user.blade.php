@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-@include('admin.css')
+    @include('admin.css')
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .status-active {
@@ -28,7 +28,16 @@
     @include('admin.header')
     @include('admin.sidebar')
     <div class="container mt-2">
+        <div class="row">
+    <form method="GET" action="{{ route('view_user') }}" class="form-inline mb-2">
+                <div class="form-group mr-2">
+                    <input type="text" name="search" class="form-control" placeholder="Search users" value="{{ request('search') }}">
+                </div>
+                <button type="submit" class="btn btn-info">Search</button>
+            </form>
+    </div>
         <div class="table-responsive">
+        @if ($data->count())
             <table class="table table-striped table-bordered custom-table">
                 <thead class="thead-green">
                     <tr>
@@ -40,20 +49,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $data)
+                    @foreach($data as $user) <!-- Renaming the variable here -->
                     <tr>
-                        <td>{{$data->name}}</td>
-                        <td>{{$data->email}}</td>
-                        <td>{{$data->phone}}</td>
-                        <td>{{$data->usertype}}</td>
-                        <td>{{$data->password}}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->usertype }}</td>
+                        <td>{{ $user->password }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $data->links() }} 
+        @endif
         </div>
     </div>
 </body>
-        @include('admin.script')
-
+    @include('admin.script')
 </html>

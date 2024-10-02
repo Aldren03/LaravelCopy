@@ -18,6 +18,7 @@ class BorrowerForm extends Model
         'date_of_birth',
         'marital_status',
         'home_address',
+        'municipality',
         'place_of_birth',
         'educational_attainment',
         'educational_status',

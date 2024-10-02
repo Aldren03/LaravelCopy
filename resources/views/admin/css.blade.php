@@ -17,4 +17,10 @@
         background-color: rgba(59, 125, 221, 0.075);
         border-left: 3px solid #3b7ddd;
     }
+    .hidden {
+        display: none;
+    }
+
+
 </style>
+

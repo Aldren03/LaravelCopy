@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
     <x-slot name="logo">
-    <a href="{{ route('index') }}">
-    <img src="{{ url('logo.png') }}" class="h-20 w-20" /> </a>
+    <a href="{{ route('home.index') }}">
+    <img src="{{ url('logo.png') }}" class="h-40 w-40" /> </a>
 </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -11,9 +11,15 @@
             @csrf
 
             <div>
-                <x-label for="name" value="{{ __('Name') }}" />
+                <x-label for="name" value="{{ __('First Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
+
+            <div>
+                <x-label for="name" value="{{ __('Last Name') }}" />
+                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            </div>
+
 
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />

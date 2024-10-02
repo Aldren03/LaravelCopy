@@ -1,8 +1,9 @@
 <x-guest-layout>
     <x-authentication-card>
+        
     <x-slot name="logo">
-    <a href="{{ route('index') }}">
-    <img src="{{ url('logo.png') }}" class="h-20 w-20" /> </a>
+    <a href="{{ route('home.index') }}">
+    <img src="{{ url('logo.png') }}" class="h-40 w-40" /> </a>
 </x-slot>
 
 

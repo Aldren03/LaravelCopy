@@ -60,6 +60,36 @@
                 </div>
             </div>
     </div>
+    <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Collection for Today </h5> 
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h1 class="card-text">&#8369; {{ number_format($totalPaymentsToday, 2) }}</h1>
+                        <i class="lni lni-coin" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-0">
+                    <a href="{{ url('payment') }}" class="btn btn-light text-success mt-3">View</a>
+                    <p class="mt-3"><small>Borrower: <strong>{{$PaymentsCountToday}}</strong></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Released for Today </h5> 
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h1 class="card-text">&#8369; {{ number_format($totalAmountToday, 2) }}</h1>
+                        <i class="lni lni-money-location" style="font-size: 3rem;"></i>    
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                    <a href="{{ url('ledger') }}" class="btn btn-light text-success">View</a>
+                <p class="mb-0"><small>Borrower: <strong>{{$releasedCountToday}}</strong></small></p>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 

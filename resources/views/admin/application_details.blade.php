@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @include('admin.css') <!-- Assuming you have a CSS partial for admin styles -->
+    @include('admin.css') 
 </head>
 <header>
-    @include('admin.header') <!-- Assuming you have a header partial for admin -->
+
 </header>
 
 <body>
-    @include('admin.sidebar')
 
     <div class="container mt-2">
         <h2 class="text-2xl text-center text-green-600 my-6">Application Details</h2>
@@ -17,7 +16,7 @@
             @csrf
             @method('PUT')
 
-            <!-- Personal Data -->
+
             <fieldset disabled class="mb-6">
                 <legend class="text-lg font-semibold mb-4">Personal Data</legend>
                 <div class="grid grid-cols-2 gap-6 mb-4">
@@ -47,7 +46,7 @@
                     </div>
                     <div>
                         <label for="home_address" class="block text-gray-700">Home Address</label>
-                        <input type="text" id="home_address" name="home_address" value="{{ $application->home_address }}" class="form-input mt-1 block w-full" />
+                        <input type="text" id="home_address" name="home_address" value="Brgy. {{ $application->home_address }}, {{ $application->municipality }}, Tarlac, Philippines "  class="form-input mt-1 block w-full" />
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-6 mb-4">
@@ -95,8 +94,7 @@
                     <input type="email" id="email" name="email" value="{{ $application->email }}" class="form-input mt-1 block w-full" readonly />
                 </div>
             </fieldset>
-            
-            <!-- Amount Applied -->
+   
             <fieldset disabled class="mb-6">
                 <legend class="text-lg font-semibold mb-4">Amount Applied</legend>
                 <div class="mb-4">
@@ -109,7 +107,7 @@
                 </div>
             </fieldset>
 
-            <!-- Source of Income -->
+  
             <legend class="text-xl font-bold mb-4">Source of Income</legend>
             <fieldset disabled class="mb-6">
                 <legend class="text-lg font-semibold mb-4">If Self-Employed</legend>
@@ -147,7 +145,7 @@
                 </div>
             </fieldset>
 
-            <!-- Personal/ Credit Reference-->
+       
             <fieldset disabled class="mb-6">
                 <legend class="text-lg font-semibold mb-4">Personal/ Credit Reference</legend>
                 <div class="grid grid-cols-2 gap-6 mb-4">
@@ -168,11 +166,11 @@
             </fieldset>
             <div class="flex justify-between mt-4">
                 <a href="{{ route('admin.pending_applications') }}" class="btn btn-secondary">Back to List</a>
-                <!-- Optionally include edit functionality -->
+        
             </div>
         </form>
     </div>
 
-    @include('admin.script') <!-- Assuming you have a script partial for admin -->
+    @include('admin.script') 
 </body>
 </html>

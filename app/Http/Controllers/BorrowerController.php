@@ -9,18 +9,25 @@
     {
         public function index ()
         {
+            if (auth()->user()->cannot('isBorrower', User::class)) {
+                abort(404);
+            }
             return view ('borrower.index');
         }
-        // Method to show the application form
+
         public function showForm()
         {
-            return view('borrower.application'); // Replace with the actual path to your Blade template
+            if (auth()->user()->cannot('isBorrower', User::class)) {
+                abort(404);
+            }
+            return view('borrower.application'); 
         }
 
         public function submitApplication(Request $request)
     {
-        Log::info('Received request data: ', $request->all());
-
+        if (auth()->user()->cannot('isBorrower', User::class)) {
+            abort(404);
+        }
         $validatedData = $request->validate([
             'borrower_title' => 'required|string|max:255',
             'borrower_name' => 'required|string|max:255',
@@ -30,6 +37,7 @@
             'date_of_birth' => 'required|date',
             'marital_status' => 'required|string|max:255',
             'home_address' => 'required|string|max:255',
+            'municipality' => 'required|string|max:255',
             'place_of_birth' => 'required|string|max:255',
             'educational_attainment' => 'required|string|max:255',
             'educational_status' => 'required|string|max:255',
@@ -54,7 +62,6 @@
             'status' => 'nullable|string|in:pending,approved,rejected',
         ]);
 
-        // Generate a unique reference number
         $validatedData['reference_no'] = uniqid('TD3-OA-');
 
         BorrowerForm::create($validatedData);
